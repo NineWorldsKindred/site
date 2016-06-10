@@ -29,7 +29,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/login/callback/';
 
     public function __construct(Socialite $socialite){
         $this->socialite = $socialite;
@@ -39,6 +39,8 @@ class AuthController extends Controller
     public function getSocialAuth($provider=null)
     {
         if(!config("services.$provider")) abort('404'); //just to handle providers that doesn't exist
+
+        $this->redirectTo .= $provider;
 
         return $this->socialite->with($provider)->redirect();
     }
