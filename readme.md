@@ -16,6 +16,14 @@ This site runs on Laravel 5.1 and is styled using the Less CSS preprocessor. It 
 
 For templating, refer to [the Laravel docs](https://laravel.com/docs/5.1/blade#defining-a-layout)
 
-For Elixir usage, see [Laravel Elixir](https://laravel.com/docs/5.1/elixir)
+## Less
 
 For Less reference, see [the Less docs](http://lesscss.org/)
+
+Less files are found and stored in `resources/assets/less`
+
+## Elixir
+
+For Elixir usage, see [Laravel Elixir](https://laravel.com/docs/5.1/elixir)
+
+Elixir commands are found in `gulpfile.js`
