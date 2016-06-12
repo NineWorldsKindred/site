@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('base')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('title', 'Home')
 
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Welcome</div>
+{{--@section('header')--}}
+{{--@endsection--}}
+
+@section('content')
+            <div class="title">Hello world!</div>
                 <a href="<?= url('/login/facebook') ?>">Login With Facebook</a>
             </div>
-        </div>
-    </body>
-</html>
+@endsection

@@ -1,6 +1,12 @@
+# Vendor/Third Party Libraries
 /vendor
 /node_modules
 /public/storage
+
+# Environment Stuff
 Homestead.yaml
 Homestead.json
 .env
+
+# Build Files
+public/css

@@ -15,4 +15,6 @@ elixir(function(mix) {
     mix.less([
         'app.less'
     ]);
+
+    mix.version('css/app.css')
 });
