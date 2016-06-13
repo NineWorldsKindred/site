@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Middleware\RedirectIfAuthenticated;
 use App\User;
 use Validator;
 use Laravel\Socialite\Contracts\Factory as Socialite;
@@ -31,10 +32,17 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/login/callback/';
 
+    protected $socialite;
+
     public function __construct(Socialite $socialite){
         $this->socialite = $socialite;
     }
 
+    public function logout() {
+        \Auth::logout();
+
+        return \Redirect::intended();
+    }
 
     public function getSocialAuth($provider=null)
     {
@@ -49,9 +57,27 @@ class AuthController extends Controller
     public function getSocialAuthCallback($provider=null)
     {
         if($user = $this->socialite->with($provider)->user()){
-            dd($user);
+            $authUser = $this->findOrCreateUser($user, $provider);
+
+            // Log in
+            \Auth::login($authUser, true);
+
+            // Return
+            return \Redirect::intended();
         }else{
             return 'something went wrong';
         }
+    }
+
+    protected function findOrCreateUser($user, $provider) {
+        if($authUser = User::where('email',$user->getEmail())->orWhere("{$provider}_id", $user->getId())->first()) {
+           return $authUser;
+        }
+        
+        return User::create([
+            'name' => $user->getName(),
+            'email' => $user->getEmail(),
+            "{$provider})_id" => $user->getId()
+        ]);
     }
 }

@@ -6,9 +6,15 @@ This is the source for the NWK Site, itself.
 
 1. Download the Vagrant repo per its instructions and run `vagrant up`
 1. Copy `.env.example` to `.env`
+    1. Go to developers.facebook.com and get the Facebook App key and Secret. Modify pertinent lines in `.env`  
 1. SSH into the Vagrant box, go to `/vagrant/site` and run `composer install` and `npm install` to install dependencies
+1. Run `php artisan migrate` to set up the database
 1. Add `192.168.10.50 site.nineworlds.vb` to your local `hosts` file
 1. Go to http://site.nineworlds.vb, you should see a running Laravel site
+
+## Todo
+
+The dependency installation and database migration should be added to a script. Copying the env file could also be done via this script. I'll probably do that once this part of it stabilizes a little bit more, so I'm not constantly changing the Vagrant part.
 
 # Updating
 

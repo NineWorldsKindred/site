@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -27,6 +23,9 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
+    // Home page
+    Route::get('/', 'AppBaseController@index');
+
     //Social Login
     Route::get('/login/{provider?}',[
         'uses' => 'Auth\AuthController@getSocialAuth',
@@ -38,4 +37,7 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'Auth\AuthController@getSocialAuthCallback',
         'as'   => 'auth.getSocialAuthCallback'
     ]);
+
+    // Logout
+    Route::get('/logout', 'Auth\AuthController@logout');
 });

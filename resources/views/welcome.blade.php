@@ -7,6 +7,10 @@
 
 @section('content')
             <div class="title">Hello world!</div>
-                <a href="<?= url('/login/facebook') ?>">Login With Facebook</a>
+                @if($user)
+                    Welcome, <?= $user->name ?>! <a href="<?= url('/logout') ?>">Log out</a>
+                @else
+                    <a href="<?= url('/login/facebook') ?>">Login With Facebook</a>
+                @endif
             </div>
 @endsection
