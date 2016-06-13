@@ -10,7 +10,8 @@
                 @if($user)
                     Welcome, <?= $user->name ?>! <a href="<?= url('/logout') ?>">Log out</a>
                 @else
-                    <a href="<?= url('/login/facebook') ?>">Login With Facebook</a>
+                    <a href="<?= url('/login/facebook') ?>">Login With Facebook</a> </br>
+                    <a href="<?= url('/login/google') ?>">Login With Google</a>
                 @endif
             </div>
 @endsection

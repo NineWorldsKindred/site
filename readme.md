@@ -33,3 +33,9 @@ Less files are found and stored in `resources/assets/less`
 For Elixir usage, see [Laravel Elixir](https://laravel.com/docs/5.1/elixir)
 
 Elixir commands are found in `gulpfile.js`
+
+# Notes
+
+## Authentication With Google
+
+Apparently, Google's a jerk and doesn't allow custom "non-public" URLs for their oAuth stuff, which is *really* annoying. We might have to change the development URL to accommodate, but for right now, I'm just going to assume the login part works, since it works with Facebook and uses the same, abstracted code. I'm thinking using the `.xyz` domain, since it's not likely that we'll actually use that as a real domain. 

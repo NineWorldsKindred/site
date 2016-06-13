@@ -71,6 +71,11 @@ class AuthController extends Controller
 
     protected function findOrCreateUser($user, $provider) {
         if($authUser = User::where('email',$user->getEmail())->orWhere("{$provider}_id", $user->getId())->first()) {
+            // Add this auth to the existing user if the email was found, but this provider is empty
+            if(!$authUser->{"{$provider}_id"}) {
+                $authUser->{"{$provider}_id"} = $user->getId();
+                $authUser->save();
+            }
            return $authUser;
         }
         
