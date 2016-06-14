@@ -46,5 +46,16 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['auth']], function() {
         // TODO: Put member-only routes here
+
+        Route::group(['middleware' => ['role:officer']], function() {
+           // TODO: Put officer-only routes here
+        });
+
+        Route::group(['middleware' => ['role:member']], function() {
+            // TODO: Put Kindred member-only routes here
+            Route::get('/test', function(){
+                return view('test');
+            });
+        });
     });
 });
