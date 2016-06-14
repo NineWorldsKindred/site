@@ -40,4 +40,11 @@ Route::group(['middleware' => ['web']], function () {
 
     // Logout
     Route::get('/logout', 'Auth\AuthController@logout');
+
+    // Calendar
+    Route::get('/calendar', 'CalendarController@index');
+
+    Route::group(['middleware' => ['auth']], function() {
+        // TODO: Put member-only routes here
+    });
 });
